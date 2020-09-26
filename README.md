@@ -1,6 +1,6 @@
 # sampathds
-back end part of the project
-technologies
+back end part.
+technologies used;
   java
   spring boot
   MySQL
