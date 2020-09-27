@@ -10,7 +10,7 @@ public class People
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long peopleId;
+    private Long id;
     @Column
     private Long nic;
     @Column
@@ -26,12 +26,12 @@ public class People
     @Column
     private int age;
 
-    public Long getPeopleId() {
-        return peopleId;
+    public Long id() {
+        return id;
     }
 
-    public void setPeopleId(Long peopleId) {
-        this.peopleId = peopleId;
+    public void setPeopleId(Long id) {
+        this.id = id;
     }
 
     public Long getNic() {
