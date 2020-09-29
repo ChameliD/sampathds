@@ -1,5 +1,6 @@
 package com.example.sampathds.controller;
 
+import com.example.sampathds.dto.LoginRequest;
 import com.example.sampathds.dto.RegisterRequest;
 import com.example.sampathds.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,4 +21,10 @@ public class AuthController
     {
         authService.signup(registerRequest);
     }
+    @PostMapping("/login")
+    public void login(@RequestBody LoginRequest loginRequest)
+    {
+        authService.login(loginRequest);
+    }
+
 }
