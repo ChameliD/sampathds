@@ -4,6 +4,7 @@ import com.example.sampathds.dto.LoginRequest;
 import com.example.sampathds.dto.RegisterRequest;
 import com.example.sampathds.model.User;
 import com.example.sampathds.repository.UserRepository;
+import com.example.sampathds.security.JwtProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,10 +20,15 @@ public class AuthService
 {
     @Autowired
     private UserRepository userRepository;
+
     @Autowired
     private PasswordEncoder passwordEncoder;
+
     @Autowired
     private AuthenticationManager authenticationManager;
+
+    @Autowired
+    private JwtProvider jwtProvider;
 
     public ResponseEntity signup(RegisterRequest registerRequest)
     {
@@ -40,10 +46,11 @@ public class AuthService
         return passwordEncoder.encode(password);
     }
 
-    public void login(LoginRequest loginRequest)
+    public String login(LoginRequest loginRequest)
     {
         Authentication authenticate =authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getUserName(),
                 loginRequest.getPassWord()));
         SecurityContextHolder.getContext().setAuthentication(authenticate);
+        return jwtProvider.generateTokrn(authenticate);
     }
 }
