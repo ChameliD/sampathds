@@ -19,6 +19,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
     @Autowired
     private UserDetailsService userDetailsService;
 
+
     @Bean(BeanIds.AUTHENTICATION_MANAGER)
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception
@@ -33,6 +34,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
                 .permitAll()
                 .anyRequest()
                 .authenticated();
+
+
     }
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {

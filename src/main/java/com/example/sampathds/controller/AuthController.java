@@ -3,13 +3,15 @@ package com.example.sampathds.controller;
 import com.example.sampathds.dto.LoginRequest;
 import com.example.sampathds.dto.RegisterRequest;
 import com.example.sampathds.service.AuthService;
+import com.example.sampathds.service.AuthenticationResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin(origins="http://localhost:4200",maxAge = 3600L)
 @RequestMapping("/api/auth")
 public class AuthController
 {
@@ -17,14 +19,18 @@ public class AuthController
     private AuthService authService;
 
     @PostMapping("/signup")
-    public void signup(@RequestBody RegisterRequest registerRequest)
+    public ResponseEntity signup(@RequestBody RegisterRequest registerRequest)
+
     {
         authService.signup(registerRequest);
-    }
-    @PostMapping("/login")
-    public void login(@RequestBody LoginRequest loginRequest)
-    {
-        authService.login(loginRequest);
+        return new ResponseEntity(HttpStatus.OK);
     }
 
-}
+    @PostMapping("/login")
+    public AuthenticationResponse login(@RequestBody LoginRequest loginRequest)
+    {
+        return authService.login(loginRequest);
+    }
+
+
+    }

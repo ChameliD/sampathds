@@ -46,7 +46,7 @@ public class AuthService
         return passwordEncoder.encode(password);
     }
 
-    public String login(LoginRequest loginRequest)
+    public AuthenticationResponse login(LoginRequest loginRequest)
     {
         Authentication authenticate =authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getUserName(),
                 loginRequest.getPassWord()));
