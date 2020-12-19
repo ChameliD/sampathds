@@ -2,32 +2,25 @@ package com.example.sampathds.dto;
 
 public class LoginRequest
 {
-    private String userName;
-    private String passWord;
-    private String email;
+    private String username;
+    private String password;
 
     public String getUserName()
     {
-        return userName;
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUserName(String username) {
+        this.username = username;
     }
 
     public String getPassWord() {
-        return passWord;
+        return password;
     }
 
-    public void setPassWord(String passWord) {
-        this.passWord = passWord;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getEmail() {
-        return email;
-    }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
 }

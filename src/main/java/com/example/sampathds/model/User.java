@@ -23,10 +23,11 @@ public class User {
         return userName;
     }
 
-    public void setUserName(String userName)
+    public void setUserName(String username)
     {
-        this.userName = userName;
+        this.userName = username;
     }
+
 
     public String getPassword()
     {
