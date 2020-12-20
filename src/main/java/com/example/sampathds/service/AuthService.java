@@ -34,7 +34,8 @@ public class AuthService
 
     public void signup(RegisterRequest registerRequest)
     {
-        User user=new User();
+        com.example.sampathds.model.User user=new User();
+
         //user.setUserName(registerRequest.getUserName());
         user.setUserName(registerRequest.getUserName());
         user.setEmail(registerRequest.getEmail());
