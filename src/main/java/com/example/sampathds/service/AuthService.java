@@ -15,6 +15,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class AuthService
 {
@@ -30,15 +32,17 @@ public class AuthService
     @Autowired
     private JwtProvider jwtProvider;
 
-    public ResponseEntity signup(RegisterRequest registerRequest)
+    public void signup(RegisterRequest registerRequest)
     {
-        User user=new User();
+        com.example.sampathds.model.User user=new User();
+
+        //user.setUserName(registerRequest.getUserName());
         user.setUserName(registerRequest.getUserName());
         user.setEmail(registerRequest.getEmail());
-        user.setPassword(encodePassword(registerRequest.getPasssword()));
+        user.setPassword(encodePassword(registerRequest.getPassword()));
 
         userRepository.save(user);
-        return new ResponseEntity(HttpStatus.OK);
+        //return new ResponseEntity(HttpStatus.OK);
 
     }
     private String encodePassword(String password)
@@ -46,11 +50,19 @@ public class AuthService
         return passwordEncoder.encode(password);
     }
 
-    public String login(LoginRequest loginRequest)
+     public AuthenticationResponse login(LoginRequest loginRequest)
     {
         Authentication authenticate =authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getUserName(),
                 loginRequest.getPassWord()));
         SecurityContextHolder.getContext().setAuthentication(authenticate);
-        return jwtProvider.generateTokrn(authenticate);
+        String authenticationToken =jwtProvider.generateTokrn(authenticate);
+        return new AuthenticationResponse(authenticationToken,loginRequest.getUserName());
+
+    }
+    public Optional<org.springframework.security.core.userdetails.User> getCurrentUser(){
+        org.springframework.security.core.userdetails.User principal =(org.springframework.security.core.userdetails.User) SecurityContextHolder.
+                getContext().getAuthentication().getPrincipal();
+        return Optional.of(principal);
+
     }
 }
