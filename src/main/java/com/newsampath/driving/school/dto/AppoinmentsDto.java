@@ -1,33 +1,13 @@
-package com.newsampath.driving.school.model;
+package com.newsampath.driving.school.dto;
 
-import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Time;
-import java.util.List;
 
-@Entity
-@Table
-public class Appoinments {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column
+public class AppoinmentsDto
+{
     private Date appoinmentDate;
-
-    @Column
     private Time appoinmentTime;
-
-    @Column
     private String username;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public Date getAppoinmentDate() {
         return appoinmentDate;
