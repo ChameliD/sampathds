@@ -1,6 +1,8 @@
 package com.newsampath.driving.school.model;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.sql.Date;
 import java.time.LocalDate;
@@ -27,6 +29,7 @@ public class Employee {
     @Column
     private String gender;
     @Column
+    @JsonFormat(pattern="yyyy-MM-dd")
     private LocalDate birthDay;
     @Column
     private String position;
@@ -34,6 +37,7 @@ public class Employee {
     private Long salary;
 
     @Column
+    @JsonFormat(pattern="yyyy-MM-dd")
     private LocalDate startDate;
     @Column
     private String status;

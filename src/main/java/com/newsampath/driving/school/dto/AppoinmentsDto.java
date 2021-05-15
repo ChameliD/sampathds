@@ -2,8 +2,6 @@ package com.newsampath.driving.school.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import java.sql.Date;
-import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalTime;
 

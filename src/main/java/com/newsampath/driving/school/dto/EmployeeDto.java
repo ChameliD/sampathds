@@ -1,5 +1,7 @@
 package com.newsampath.driving.school.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.sql.Date;
 import java.time.LocalDate;
 
@@ -12,9 +14,11 @@ public class EmployeeDto {
     private String telephoneNo;
     private String email;
     private String gender;
+    @JsonFormat(pattern="yyyy-MM-dd")
     private LocalDate birthday;
     private String position;
     private Long salary;
+    @JsonFormat(pattern="yyyy-MM-dd")
     private LocalDate startDate;
     private String status;
 

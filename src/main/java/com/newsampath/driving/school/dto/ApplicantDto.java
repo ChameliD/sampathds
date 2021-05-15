@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 public class ApplicantDto {
     private Long id;
@@ -14,12 +15,12 @@ public class ApplicantDto {
     private String telephoneNo;
     private String gender;
 
-    @DateTimeFormat(pattern = "yyy-mm-dd hh:ss:mm")
-    @JsonFormat(pattern = "yyy-mm-dd ")
-    private Date birthDay;
+    @JsonFormat(pattern="yyyy-MM-dd")
+    private LocalDate birthDay;
     private String licenceType;
     private Long advance ;
-    private Date advancedDate ;
+    @JsonFormat(pattern="yyyy-MM-dd")
+    private LocalDate advancedDate ;
     private String medicalId ;
     private String vehicaleClass ;
     private String description ;
@@ -80,11 +81,11 @@ public class ApplicantDto {
         this.gender = gender;
     }
 
-    public Date getBirthDay() {
+    public LocalDate getBirthDay() {
         return birthDay;
     }
 
-    public void setBirthDay(Date birthDay) {
+    public void setBirthDay(LocalDate birthDay) {
         this.birthDay = birthDay;
     }
 
@@ -104,11 +105,11 @@ public class ApplicantDto {
         this.advance = advance;
     }
 
-    public Date getAdvancedDate() {
+    public LocalDate getAdvancedDate() {
         return advancedDate;
     }
 
-    public void setAdvancedDate(Date advancedDate) {
+    public void setAdvancedDate(LocalDate advancedDate) {
         this.advancedDate = advancedDate;
     }
 

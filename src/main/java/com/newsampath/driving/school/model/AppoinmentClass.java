@@ -1,8 +1,12 @@
 package com.newsampath.driving.school.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Entity
 @Table
@@ -13,9 +17,11 @@ public class AppoinmentClass {
     private Long id;
 
     @Column
-    private Date appoinmentDate;
+    @JsonFormat(pattern="yyyy-MM-dd")
+    private LocalDate appoinmentDate;
     @Column
-    private Time appoinmentTime;
+    @JsonFormat(pattern="HH:mm:ss")
+    private LocalTime appoinmentTime;
     @Column
     private String username;
     @Column
@@ -29,19 +35,19 @@ public class AppoinmentClass {
         this.id = id;
     }
 
-    public Date getAppoinmentDate() {
+    public LocalDate getAppoinmentDate() {
         return appoinmentDate;
     }
 
-    public void setAppoinmentDate(Date appoinmentDate) {
+    public void setAppoinmentDate(LocalDate appoinmentDate) {
         this.appoinmentDate = appoinmentDate;
     }
 
-    public Time getAppoinmentTime() {
+    public LocalTime getAppoinmentTime() {
         return appoinmentTime;
     }
 
-    public void setAppoinmentTime(Time appoinmentTime) {
+    public void setAppoinmentTime(LocalTime appoinmentTime) {
         this.appoinmentTime = appoinmentTime;
     }
 

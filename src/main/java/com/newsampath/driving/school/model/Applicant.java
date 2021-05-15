@@ -1,7 +1,10 @@
 package com.newsampath.driving.school.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.sql.Date;
+import java.time.LocalDate;
 
 @Entity
 @Table
@@ -23,7 +26,8 @@ public class Applicant {
     @Column
     private String gender;
     @Column
-    private Date birthDay;
+    @JsonFormat(pattern="yyyy-MM-dd")
+    private LocalDate birthDay;
     @Column
     private String licenceType;
 
@@ -31,7 +35,8 @@ public class Applicant {
     private long advance;
 
     @Column
-    private Date advancedDate;
+    @JsonFormat(pattern="yyyy-MM-dd")
+    private LocalDate advancedDate;
 
     @Column
     private String medicalId;
@@ -98,11 +103,11 @@ public class Applicant {
         this.gender = gender;
     }
 
-    public java.util.Date getBirthDay() {
+    public LocalDate getBirthDay() {
         return birthDay;
     }
 
-    public void setBirthDay(Date birthDay) {
+    public void setBirthDay(LocalDate birthDay) {
         this.birthDay = birthDay;
     }
 
@@ -122,11 +127,11 @@ public class Applicant {
         this.advance = advance;
     }
 
-    public Date getAdvancedDate() {
+    public LocalDate getAdvancedDate() {
         return advancedDate;
     }
 
-    public void setAdvancedDate(Date advancedDate) {
+    public void setAdvancedDate(LocalDate advancedDate) {
         this.advancedDate = advancedDate;
     }
 
