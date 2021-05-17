@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.ResourceAccessException;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -56,7 +57,7 @@ public class ApplicantController {
         applicant.setAddress(applicantDetails.getAddress());
         applicant.setTelephoneNo(applicantDetails.getTelephoneNo());
         applicant.setGender(applicantDetails.getGender());
-        applicant.setBirthDay((Date) applicantDetails.getBirthDay());
+        applicant.setBirthDay((LocalDate) applicantDetails.getBirthDay());
         applicant.setLicenceType(applicantDetails.getLicenceType());
         applicant.setAdvance(applicantDetails.getAdvance());
         applicant.setAdvancedDate(applicantDetails.getAdvancedDate());
